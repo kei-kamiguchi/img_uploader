@@ -37,3 +37,21 @@ params.require(:model).permit(:image, :image_cache)
 ```
 <%= image_tag @feed.image.url %>
 ```
+# 画像のリサイズ
+https://qiita.com/nekotanku/items/5da43600f35eada64eac
+[app/uploaders/image_uploader.rb]
+```
+# 縦横比を維持して、全てリサイズ
+process resize_to_limit: [1200, 900]
+
+# 余白の塗りつぶし
+process resize_to_limit: [300, 200, "#ffffff", "Center"]
+
+# 縦横比を維持せずリサイズ
+process resize_to_fill: [100, 100, "Center"]
+
+# 指定したもののみ、縦横比を維持してリサイズ
+version :thumb do
+    process resize_to_limit: [480, 360]
+end
+```
