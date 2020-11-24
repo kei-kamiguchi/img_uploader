@@ -62,3 +62,10 @@ class ImageUploader < CarrierWave::Uploader::Base
     process resize_to_limit: [480, 360]
   end
 ```
+# cssで画像を円形にトリミング
+```
+width:50px;
+height:50px;
+object-fit:cover;
+border-radius:50%;
+```
