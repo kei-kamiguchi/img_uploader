@@ -18,6 +18,7 @@ gem 'mini_magick' #アップロードした画像ファイルのサイズを変�
 $ rails g uploader Image
 ```
 [app/uploaders/image_uploader.rb]が作成される
+
 5. 対象のモデルに以下を追記し、imageカラムと、ImageUploaderを紐付け
 ```
 mount_uploader :image, ImageUploader
@@ -41,17 +42,21 @@ params.require(:model).permit(:image, :image_cache)
 https://qiita.com/nekotanku/items/5da43600f35eada64eac
 [app/uploaders/image_uploader.rb]
 ```
+class ImageUploader < CarrierWave::Uploader::Base
+# minimagicが使用できるよう以下のコメントアウトを外す
+  include CarrierWave::MiniMagick 
+
 # 縦横比を維持して、全てリサイズ
-process resize_to_limit: [1200, 900]
+  process resize_to_limit: [1200, 900]
 
 # 余白の塗りつぶし
-process resize_to_limit: [300, 200, "#ffffff", "Center"]
+  process resize_to_limit: [300, 200, "#ffffff", "Center"]
 
 # 縦横比を維持せずリサイズ
-process resize_to_fill: [100, 100, "Center"]
+  process resize_to_fill: [100, 100, "Center"]
 
 # 指定したもののみ、縦横比を維持してリサイズ
-version :thumb do
+  version :thumb do
     process resize_to_limit: [480, 360]
-end
+  end
 ```
