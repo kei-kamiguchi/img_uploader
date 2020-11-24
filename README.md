@@ -48,6 +48,8 @@ class ImageUploader < CarrierWave::Uploader::Base
 
 # 縦横比を維持して、全てリサイズ
   process resize_to_limit: [1200, 900]
+# 縦横比を維持して、一方のみサイズ制限
+  process :resize_to_limit => [500, nil]
 
 # 余白の塗りつぶし
   process resize_to_limit: [300, 200, "#ffffff", "Center"]
