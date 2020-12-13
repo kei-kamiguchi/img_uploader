@@ -54,7 +54,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 # 余白の塗りつぶし
   process resize_to_limit: [300, 200, "#ffffff", "Center"]
 
-# 縦横比を維持せずリサイズ
+# 切り抜き(全て同じサイズにリサイズされる)
   process resize_to_fill: [100, 100, "Center"]
 
 # 指定したもののみ、縦横比を維持してリサイズ
