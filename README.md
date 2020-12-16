@@ -69,3 +69,17 @@ height:50px;
 object-fit:cover;
 border-radius:50%;
 ```
+# 画像をseedデータで投入する
+
+1. 導入したい画像をpublic配下のimagesフォルダなどに格納
+2. seedデータを記述する
+
+例
+```
+Food.create!(
+   name: 'りんご',
+   category: '果物',
+   calorie: 120,
+   image:File.open("./public/images/ファイル名.jpg"),
+)
+```
