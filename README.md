@@ -70,7 +70,7 @@ object-fit:cover;
 border-radius:50%;
 ```
 # 画像をseedデータで投入する
-
+参考：https://sweets-engineer.com/carrierwaveseed/
 1. 導入したい画像をpublic配下のimagesフォルダなどに格納
 2. seedデータを記述する
 
